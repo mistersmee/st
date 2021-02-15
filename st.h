@@ -148,3 +148,4 @@ extern unsigned int defaultbg;
 extern const int boxdraw, boxdraw_bold, boxdraw_braille;
 extern char *iso14755_cmd;
 extern float alpha;
+extern unsigned int defaultcs;
