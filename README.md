@@ -17,8 +17,11 @@ The following patches have been added (found in the patches folder)
 + xclearwin
 + clipboard
 
-Keybindings have also been customised to my tastes. Checkout config.def.h for more.
-Version 0.8.4.
+Keybindings have also been customised to my tastes (i.e stolen from Luke Smith's build. I used that for so long, I'm most comfortable with them.). Checkout config.def.h for more.
+
+Also, some code from Luke Smith's build has been proudly lifted, to fix some bugs i.e, the alpha patch not being correctly fully transparent, and the correct defaultbg, etc values, and the externalpipe scripts are also lifted from the same.
+
+st version 0.8.4.
 
 st - simple terminal
 --------------------
