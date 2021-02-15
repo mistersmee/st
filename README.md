@@ -16,6 +16,7 @@ The following patches have been added (found in the patches folder)
 + xresources
 + xclearwin
 + clipboard
++ OSC 10 11 12 2
 
 Keybindings have also been customised to my tastes (i.e stolen from Luke Smith's build. I used that for so long, I'm most comfortable with them.). Checkout config.def.h for more.
 
