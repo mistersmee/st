@@ -2156,6 +2156,7 @@ iso14755(const Arg *arg)
 		return;
 
 	ttywrite(uc, utf8encode(utf32, uc), 1);
+	xclearwin();
 }
 
 void
