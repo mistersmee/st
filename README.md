@@ -1,3 +1,25 @@
+# My build of st
+The following patches have been added (found in the patches folder)
++ alpha
++ anysize
++ bold-is-not-bright
++ boxdraw_v2
++ externalpipe
++ externalpipe-eternal
++ font2
++ iso14755
++ ligatures
++ scrollback
++ scrollback-mouse
++ scrollback-mouse-altscreen
++ vertcenter
++ xresources
++ xclearwin
++ clipboard
+
+Keybindings have also been customised to my tastes. Checkout config.def.h for more.
+Version 0.8.4.
+
 st - simple terminal
 --------------------
 st is a simple terminal emulator for X which sucks less.
