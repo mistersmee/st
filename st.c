@@ -36,8 +36,9 @@
 #define STR_BUF_SIZ   ESC_BUF_SIZ
 #define STR_ARG_SIZ   ESC_ARG_SIZ
 #define HISTSIZE      2000
-
+#define ISO14755CMD   "dmenu -w \"$WINDOWID\" -p codepoint: </dev/null"
 /* macros */
+#define NUMMAXLEN(x)		((int)(sizeof(x) * 2.56 + 0.5) + 1)
 #define IS_SET(flag)		((term.mode & (flag)) != 0)
 #define ISCONTROLC0(c)		(BETWEEN(c, 0, 0x1f) || (c) == 0x7f)
 #define ISCONTROLC1(c)		(BETWEEN(c, 0x80, 0x9f))
@@ -2142,7 +2143,7 @@ iso14755(const Arg *arg)
 	char *us, *e, codepoint[9], uc[UTF_SIZ];
 	unsigned long utf32;
 
-	if (!(p = popen(iso14755_cmd, "r")))
+	if (!(p = popen(ISO14755CMD, "r")))
 		return;
 
 	us = fgets(codepoint, sizeof(codepoint), p);
