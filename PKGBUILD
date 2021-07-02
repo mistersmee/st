@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
 
 pkgname=st-aseem
 _pkgname=st
-pkgver=1.4.r129.22678d4
+pkgver=0.8.4.r1161.c206ccc
 pkgrel=1
 epoch=1
 pkgdesc="My build of st."
@@ -13,7 +13,6 @@ depends=('git')
 makedepends=('make')
 source=('git://github.com/mistersmee/st')
 sha1sums=('SKIP')
-
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
@@ -29,10 +28,12 @@ prepare() {
 
 build() {
 	cd "${_pkgname}"
-	make
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
 	cd "${_pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	install -Dm44 LICENSE "${pkgdir}/user/share/licenses/${pkgname}/LICENSE"
+	install -Dm44 README.md "${pkgdir}/user/share/doc/${pkgname}/README.md"
 }
