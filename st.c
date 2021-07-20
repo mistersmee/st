@@ -283,12 +283,7 @@ xstrdup(const char *s)
 	char *p;
 
 	if ((p = strdup(s)) == NULL)
-<<<<<<< HEAD
  		die("strdup: %s\n", strerror(errno));
-=======
-		die("strdup: %s\n", strerror(errno));
->>>>>>> master
-
 	return p;
 }
 
