@@ -177,8 +177,11 @@ static void xhints(void);
 static int xloadcolor(int, const char *, Color *);
 static int xloadfont(Font *, FcPattern *);
 static void xloadfonts(const char *, double);
+<<<<<<< HEAD
 static int xloadsparefont(FcPattern *, int);
 static void xloadsparefonts(void);
+=======
+>>>>>>> master
 static void xunloadfont(Font *);
 static void xunloadfonts(void);
 static void xsetenv(void);
