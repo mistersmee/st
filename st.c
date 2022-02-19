@@ -2031,8 +2031,9 @@ strhandle(void)
 				fprintf(stderr, "erresc: invalid foreground color %d\n", p);
 			else
 				redraw();
+				tfulldirt();
 			break;
-		case 11: /* set background color */
+		case 11:
 			if (narg < 2)
 				break;
 
@@ -2041,6 +2042,7 @@ strhandle(void)
 				fprintf(stderr, "erresc: invalid background color %d\n", p);
 			else
 				redraw();
+				tfulldirt();
 			break;
 		case 12: /* set cursor color */
 			if (narg < 2)
@@ -2051,6 +2053,7 @@ strhandle(void)
 				fprintf(stderr, "erresc: invalid cursor color %d\n", p);
 			else
 				redraw();
+				tfulldirt();
 			break;
 		case 4: /* color set */
 			if (narg < 3)
@@ -2073,6 +2076,7 @@ strhandle(void)
 				if (j == defaultbg)
 														xclearwin();
 				redraw();
+				tfulldirt();
 			}
 			return;
 		}
