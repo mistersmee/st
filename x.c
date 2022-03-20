@@ -1664,6 +1664,7 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 
 		/* Fill the background */
 		XftDrawRect(xw.draw, bg, winx, winy, width, win.ch);
+
 	}
 	if (dmode & DRAW_FG) {
 		if (base.mode & ATTR_BOXDRAW) {
@@ -1675,12 +1676,12 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 
 		/* Render underline and strikethrough. */
 		if (base.mode & ATTR_UNDERLINE) {
-			XftDrawRect(xw.draw, fg, winx, winy + win.cyo + dc.font.ascent + 1,
+			XftDrawRect(xw.draw, fg, winx, winy + win.cyo + dc.font.ascent * chscale + 1,
 					width, 1);
 		}
 
 		if (base.mode & ATTR_STRUCK) {
-			XftDrawRect(xw.draw, fg, winx, winy + win.cyo + 2 * dc.font.ascent / 3,
+			XftDrawRect(xw.draw, fg, winx, winy + win.cyo + 2 * dc.font.ascent * chscale / 3,
 					width, 1);
 		}
 
