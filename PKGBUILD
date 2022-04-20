@@ -2,7 +2,7 @@
 
 pkgname=st-aseem
 _pkgname=st
-pkgver=0.8.4.r1161.c206ccc
+pkgver=0.8.5.r1200.90dca02
 pkgrel=1
 epoch=1
 pkgdesc="My build of st."
@@ -11,7 +11,7 @@ arch=(any)
 license=('MIT')
 depends=('fontconfig' 'harfbuzz' 'libxrender' 'libxft-bgra-git' 'libxext' 'ncurses')
 makedepends=('git')
-source=('git://github.com/mistersmee/st')
+source=('git+https://github.com/mistersmee/st')
 sha1sums=('SKIP')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
