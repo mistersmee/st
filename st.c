@@ -171,6 +171,7 @@ static void csidump(void);
 static void csihandle(void);
 static void csiparse(void);
 static void csireset(void);
+static void osc_color_response(int, int, int);
 static int eschandle(uchar);
 static void strdump(void);
 static void strhandle(void);
@@ -1931,6 +1932,7 @@ externalpipe(const Arg *arg)
 	int lastpos, n, newline;
 
 	if (pipe(to) == -1)
+
 		return;
 
 	switch (fork()) {
@@ -1981,6 +1983,11 @@ strhandle(void)
 {
 	char *p = NULL, *dec;
 	int j, narg, par;
+	const struct { int idx; char *str; } osc_table[] = {
+		{ defaultfg, "foreground" },
+		{ defaultbg, "background" },
+		{ defaultcs, "cursor" }
+	};
 
 	term.esc &= ~(ESC_STR_END|ESC_STR);
 	strparse();
@@ -2039,7 +2046,6 @@ strhandle(void)
 		case 12: /* set cursor color */
 			if (narg < 2)
 				break;
-
 			p = strescseq.args[1];
 			if (xsetcolorname(defaultcs, p))
 				fprintf(stderr, "erresc: invalid cursor color %d\n", p);
