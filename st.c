@@ -47,16 +47,16 @@
 #define TLINE(y)		((y) < term.scr ? term.hist[((y) + term.histi - \
 				term.scr + HISTSIZE + 1) % HISTSIZE] : \
 				term.line[(y) - term.scr])
-#define TLINE_HIST(y)           ((y) <= HISTSIZE-term.row+2 ? term.hist[(y)] : term.line[(y-HISTSIZE+term.row-3)])
+#define TLINE_HIST(y)		((y) <= HISTSIZE-term.row+2 ? term.hist[(y)] : term.line[(y-HISTSIZE+term.row-3)])
 
 enum term_mode {
-	MODE_WRAP        = 1 << 0,
-	MODE_INSERT      = 1 << 1,
-	MODE_ALTSCREEN   = 1 << 2,
-	MODE_CRLF        = 1 << 3,
-	MODE_ECHO        = 1 << 4,
-	MODE_PRINT       = 1 << 5,
-	MODE_UTF8        = 1 << 6,
+	MODE_WRAP	 = 1 << 0,
+	MODE_INSERT	 = 1 << 1,
+	MODE_ALTSCREEN	 = 1 << 2,
+	MODE_CRLF	 = 1 << 3,
+	MODE_ECHO	 = 1 << 4,
+	MODE_PRINT	 = 1 << 5,
+	MODE_UTF8	 = 1 << 6,
 };
 
 enum cursor_movement {
@@ -65,9 +65,9 @@ enum cursor_movement {
 };
 
 enum cursor_state {
-	CURSOR_DEFAULT  = 0,
+	CURSOR_DEFAULT	= 0,
 	CURSOR_WRAPNEXT = 1,
-	CURSOR_ORIGIN   = 2
+	CURSOR_ORIGIN	= 2
 };
 
 enum charset {
@@ -129,7 +129,7 @@ typedef struct {
 	TCursor c;    /* cursor */
 	int ocx;      /* old cursor col */
 	int ocy;      /* old cursor row */
-	int top;      /* top    scroll limit */
+	int top;      /* top	scroll limit */
 	int bot;      /* bottom scroll limit */
 	int mode;     /* terminal mode flags */
 	int esc;      /* escape state flags */
@@ -144,22 +144,22 @@ typedef struct {
 /* ESC '[' [[ [<priv>] <arg> [;]] <mode> [<mode>]] */
 typedef struct {
 	char buf[ESC_BUF_SIZ]; /* raw string */
-	size_t len;            /* raw string length */
+	size_t len;	       /* raw string length */
 	char priv;
 	int arg[ESC_ARG_SIZ];
-	int narg;              /* nb of args */
+	int narg;	       /* nb of args */
 	char mode[2];
 } CSIEscape;
 
 /* STR Escape sequence structs */
 /* ESC type [[ [<priv>] <arg> [;]] <mode>] ESC '\' */
 typedef struct {
-	char type;             /* ESC type ... */
-	char *buf;             /* allocated raw string */
-	size_t siz;            /* allocation size */
-	size_t len;            /* raw string length */
+	char type;	       /* ESC type ... */
+	char *buf;	       /* allocated raw string */
+	size_t siz;	       /* allocation size */
+	size_t len;	       /* raw string length */
 	char *args[STR_ARG_SIZ];
-	int narg;              /* nb of args */
+	int narg;	       /* nb of args */
 } STREscape;
 
 static void execsh(char *, char **);
@@ -239,7 +239,7 @@ static pid_t pid;
 
 static const uchar utfbyte[UTF_SIZ + 1] = {0x80,    0, 0xC0, 0xE0, 0xF0};
 static const uchar utfmask[UTF_SIZ + 1] = {0xC0, 0x80, 0xE0, 0xF0, 0xF8};
-static const Rune utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  0x800,  0x10000};
+static const Rune utfmin[UTF_SIZ + 1] = {	0,    0,  0x80,  0x800,  0x10000};
 static const Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
 
 ssize_t
@@ -285,7 +285,7 @@ xstrdup(const char *s)
 	char *p;
 
 	if ((p = strdup(s)) == NULL)
- 		die("strdup: %s\n", strerror(errno));
+		die("strdup: %s\n", strerror(errno));
 	return p;
 }
 
@@ -1425,7 +1425,7 @@ tdefcolor(const int *attr, int *npar, int l)
 	case 4: /* direct color in CMYK space */
 	default:
 		fprintf(stderr,
-		        "erresc(38): gfx attr %d unknown\n", attr[*npar]);
+			"erresc(38): gfx attr %d unknown\n", attr[*npar]);
 		break;
 	}
 
@@ -1442,14 +1442,14 @@ tsetattr(const int *attr, int l)
 		switch (attr[i]) {
 		case 0:
 			term.c.attr.mode &= ~(
-				ATTR_BOLD       |
-				ATTR_FAINT      |
-				ATTR_ITALIC     |
-				ATTR_UNDERLINE  |
-				ATTR_BLINK      |
-				ATTR_REVERSE    |
-				ATTR_INVISIBLE  |
-				ATTR_STRUCK     );
+				ATTR_BOLD	|
+				ATTR_FAINT	|
+				ATTR_ITALIC	|
+				ATTR_UNDERLINE	|
+				ATTR_BLINK	|
+				ATTR_REVERSE	|
+				ATTR_INVISIBLE	|
+				ATTR_STRUCK	);
 			term.c.attr.fg = defaultfg;
 			term.c.attr.bg = defaultbg;
 			break;
@@ -1959,8 +1959,8 @@ externalpipe(const Arg *arg)
 		lastpos = MIN(tlinehistlen(n) + 1, term.col) - 1;
 		if (lastpos < 0)
 			break;
-        if (lastpos == 0)
-            continue;
+	if (lastpos == 0)
+	    continue;
 		end = &bp[lastpos + 1];
 		for (; bp < end; ++bp)
 			if (xwrite(to[1], buf, utf8encode(bp->u, buf)) < 0)
@@ -2065,7 +2065,7 @@ strhandle(void)
 				if (par == 104 && narg <= 1)
 					return; /* color reset without parameter */
 				fprintf(stderr, "erresc: invalid color j=%d, p=%s\n",
-				        j, p ? p : "(null)");
+					j, p ? p : "(null)");
 			} else {
 				/*
 				 * TODO if defaultbg color is changed, borders
@@ -2671,7 +2671,7 @@ tresize(int col, int row)
 
 	if (col < 1 || row < 1) {
 		fprintf(stderr,
-		        "tresize: error resizing to %dx%d\n", col, row);
+			"tresize: error resizing to %dx%d\n", col, row);
 		return;
 	}
 
@@ -2696,7 +2696,7 @@ tresize(int col, int row)
 
 	/* resize to new height */
 	term.line = xrealloc(term.line, row * sizeof(Line));
-	term.alt  = xrealloc(term.alt,  row * sizeof(Line));
+	term.alt  = xrealloc(term.alt,	row * sizeof(Line));
 	term.dirty = xrealloc(term.dirty, row * sizeof(*term.dirty));
 	term.tabs = xrealloc(term.tabs, col * sizeof(*term.tabs));
 

@@ -47,7 +47,7 @@ boxdrawindex(const Glyph *g)
 
 void
 drawboxes(int x, int y, int cw, int ch, XftColor *fg, XftColor *bg,
-          const XftGlyphFontSpec *specs, int len)
+	  const XftGlyphFontSpec *specs, int len)
 {
 	for ( ; len-- > 0; x += cw, specs++)
 		drawbox(x, y, cw, ch, fg, bg, (ushort)specs->glyph);
@@ -128,7 +128,7 @@ void
 drawboxlines(int x, int y, int w, int h, XftColor *fg, ushort bd)
 {
 	/* s: stem thickness. width/8 roughly matches underscore thickness. */
-	/* We draw bold as 1.5 * normal-stem and at least 1px thicker.      */
+	/* We draw bold as 1.5 * normal-stem and at least 1px thicker.	    */
 	/* doubles draw at least 3px, even when w or h < 3. bold needs 6px. */
 	int mwh = MIN(w, h);
 	int base_s = MAX(1, DIV(mwh, 8));

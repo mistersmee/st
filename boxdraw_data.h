@@ -62,8 +62,8 @@
 /* Data for U+2500 - U+259F except dashes/diagonals */
 static const unsigned short boxdata[256] = {
 	/* light lines */
-	[0x00] = BDL + LH,       /* light horizontal */
-	[0x02] = BDL + LV,       /* light vertical */
+	[0x00] = BDL + LH,	 /* light horizontal */
+	[0x02] = BDL + LV,	 /* light vertical */
 	[0x0c] = BDL + LD + LR,  /* light down and right */
 	[0x10] = BDL + LD + LL,  /* light down and left */
 	[0x14] = BDL + LU + LR,  /* light up and right */
@@ -73,10 +73,10 @@ static const unsigned short boxdata[256] = {
 	[0x2c] = BDL + LH + LD,  /* light horizontal and down */
 	[0x34] = BDL + LH + LU,  /* light horizontal and up */
 	[0x3c] = BDL + LV + LH,  /* light vertical and horizontal */
-	[0x74] = BDL + LL,       /* light left */
-	[0x75] = BDL + LU,       /* light up */
-	[0x76] = BDL + LR,       /* light right */
-	[0x77] = BDL + LD,       /* light down */
+	[0x74] = BDL + LL,	 /* light left */
+	[0x75] = BDL + LU,	 /* light up */
+	[0x76] = BDL + LR,	 /* light right */
+	[0x77] = BDL + LD,	 /* light down */
 
 	/* heavy [+light] lines */
 	[0x01] = BDL + HH,
